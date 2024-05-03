@@ -64,7 +64,11 @@ class _NoteListScreenState extends State<NoteListScreen> {
                     onPressed: () {
                       NoteService.addNote(_titleController.text,
                               _descriptionController.text)
-                          .whenComplete(() => Navigator.of(context).pop());
+                          .whenComplete(() {
+                        _titleController.clear();
+                        _descriptionController.clear();
+                        Navigator.of(context).pop();
+                      });
                     },
                     child: const Text('Save'),
                   ),
