@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:notes/models/note.dart';
 import 'package:notes/services/note_service.dart';
 
 class NoteDialog extends StatelessWidget {
-  final Map<String, dynamic>? note;
+  final Note? note;
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
 
   NoteDialog({super.key, this.note}) {
     if (note != null) {
-      _titleController.text = note!['title'];
-      _descriptionController.text = note!['description'];
+      _titleController.text = note!.title;
+      _descriptionController.text = note!.description;
     }
   }
 
@@ -51,14 +52,18 @@ class NoteDialog extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             if (note == null) {
-              NoteService.addNote(
-                      _titleController.text, _descriptionController.text)
+              NoteService.addNote(Note(
+                      title: _titleController.text,
+                      description: _descriptionController.text,))
                   .whenComplete(() {
                 Navigator.of(context).pop();
               });
             } else {
-              NoteService.updateNote(note!['id'], _titleController.text,
-                      _descriptionController.text)
+              NoteService.updateNote(Note(
+                id: note!.id,
+                title: _titleController.text, 
+                description: _descriptionController.text,
+                createdAt: note!.createdAt,))
                   .whenComplete(() => Navigator.of(context).pop());
             }
           },

@@ -63,11 +63,11 @@ class NoteList extends StatelessWidget {
                         },
                       );
                     },
-                    title: Text(document['title']),
-                    subtitle: Text(document['description']),
+                    title: Text(document.title),
+                    subtitle: Text(document.description),
                     trailing: InkWell(
                       onTap: () {
-                        NoteService.deleteNote(document['id']);
+                        NoteService.deleteNote(document);
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
