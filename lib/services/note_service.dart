@@ -28,6 +28,8 @@ class NoteService {
       'title': note.title,
       'description': note.description,
       'image_url': note.imageUrl,
+      'latitude': note.latitude,
+      'longitude': note.longitude,
       'created_at': FieldValue.serverTimestamp(),
       'updated_at': FieldValue.serverTimestamp(),
     };
@@ -39,6 +41,8 @@ class NoteService {
       'title': note.title,
       'description': note.description,
       'image_url': note.imageUrl,
+      'latitude': note.latitude,
+      'longitude': note.longitude,
       'created_at': note.createdAt,
       'updated_at': FieldValue.serverTimestamp(),
     };
@@ -63,6 +67,12 @@ class NoteService {
           title: data['title'],
           description: data['description'],
           imageUrl: data['image_url'],
+          latitude: data['latitude'] != null
+              ? data['latitude'] as double
+              : null,
+          longitude: data['longitude'] != null
+              ? data['longitude'] as double
+              : null,
           createdAt: data['created_at'] != null
               ? data['created_at'] as Timestamp
               : null,
