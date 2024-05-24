@@ -47,3 +47,6 @@ app.*.map.json
 /ios/firebase_app_id_file.json
 /macos/firebase_app_id_file.json
 /lib/firebase_options.dart
+
+# .env file
+*.env
